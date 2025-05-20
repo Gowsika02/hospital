@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Care Hospital - Caring for Your Health</title>
+    <meta name="description" content="Harmony Care Hospital provides exceptional healthcare services with state-of-the-art facilities and expert medical professionals.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #2c88d9;
+            --secondary-color: #5cb85c;
+            --accent-color: #e3f2fd;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --white: #ffffff;
+            --gray-bg: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(159, 211, 176, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .active {
+            color: var(--primary-color);
+        }
+
+        .active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1920/1080') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            padding: 0 5%;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2375be;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4ca04c;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Services Preview */
+        .services-preview {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 60px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-subtitle {
+            color: var(--light-text);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* About Preview */
+        .about-preview {
+            padding: 5rem 5%;
+            background-color: var(--gray-bg);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 60px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Doctors Preview */
+        .doctors-preview {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .doctors-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .doctor-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .doctor-card:hover .doctor-img img {
+            transform: scale(1.1);
+        }
+
+        .doctor-info {
+            padding: 1.5rem;
+        }
+
+        .doctor-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .doctor-specialty {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action */
+        .cta {
+            padding: 5rem 5%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1920/1080') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background-color: var(--gray-bg);
+            text-align: center;
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 0 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #bfd0f3;
+            color: var(--white);
+            padding: 4rem 5% 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 40px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #131313;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-col p {
+            color: #181717;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #b3b3b3;
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #2375be;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            nav ul {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                gap: 0;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.8s;
+        }
+
+        /* Additional Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat fa-2x" style="color: #2c88d9;"></i>
+                <div class="logo-text">Harmony <span>Care</span></div>
+            </div>
+            <nav>
+                <ul id="navbar">
+                    <li><a href="hospital.html" class="active">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#appointments">Appointments</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home / Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="animate__animated animate__fadeInDown">Welcome to Harmony Care Hospital</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">
+            At Harmony Care Hospital, your health is our top priority. We combine cutting-edge medical technology with a compassionate approach to deliver exceptional healthcare.
+        </p>
+        <a href="#appointments" class="btn animate__animated animate__fadeInUp animate__delay-2s pulse">Book an Appointment</a>
+        <a href="#services" class="btn btn-outline animate__animated animate__fadeInUp animate__delay-2s">Our Services</a>
+    </div>
+</section>
+ <!-- About Preview -->
+ <!-- About Us Section -->
+<section class="about-preview" id="about" style="background-color: #f8f9fa; padding: 5rem 5%;">
+    <div class="about-container">
+        <div class="about-image fade-in">
+            <img src="images/hospital.jpg" alt="Hospital Image">
+        </div>
+        <div class="about-content">
+            <h2 class="fade-in">About Harmony Care Hospital</h2>
+            
+            <!-- Hospital History -->
+            <p class="fade-in delay-1">
+                <strong>History:</strong> Founded in 1995, Harmony Care Hospital has served Wellness City with dedication and innovation for over 25 years. What began as a small clinic has grown into a multi-specialty healthcare facility known for patient-centered care and state-of-the-art treatment.
+            </p>
+            
+            <!-- Vision and Mission -->
+            <p class="fade-in delay-2">
+                <strong>Vision:</strong> To be the most trusted healthcare partner for our community, ensuring a healthier tomorrow for all.
+            </p>
+            <p class="fade-in delay-2">
+                <strong>Mission:</strong> We are committed to delivering compassionate care, advancing medical knowledge, and fostering health and healing in every life we touch.
+            </p>
+            
+            <!-- Accreditation -->
+            <p class="fade-in delay-3">
+                <strong>Accreditation:</strong> Harmony Care Hospital is accredited by the National Health Assurance Board (NHAB) and complies with international standards for patient safety and clinical excellence. (Dummy accreditation)
+            </p>
+
+            <a href="#appointments" class="btn fade-in delay-4">Book an Appointment</a>
+        </div>
+    </div>
+</section>
+ <!-- Services Preview -->
+ <section class="services-preview" id="services">
+   
+    <h2 class="section-title fade-in">Our Services</h2>
+    <p class="section-subtitle fade-in">We offer a wide range of healthcare services to meet all your medical needs with state-of-the-art facilities and expert care.</p>
+    
+    <div class="services-container">
+        <div class="service-card fade-in delay-1">
+            <div class="service-icon float">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <h3 class="service-title">Cardiology</h3>
+            <p>Comprehensive heart care with cutting-edge diagnostic and treatment options for all cardiac conditions.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-2">
+            <div class="service-icon float">
+                <i class="fas fa-bone"></i>
+            </div>
+            <h3 class="service-title">Orthopedics</h3>
+            <p>Expert care for bone, joint, and muscle conditions, from sports injuries to complex reconstructive procedures.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-3">
+            <div class="service-icon float">
+                <i class="fas fa-baby"></i>
+            </div>
+            <h3 class="service-title">Pediatrics</h3>
+            <p>Specialized healthcare for children from newborns to adolescents in a child-friendly environment.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-4">
+            <div class="service-icon float">
+                <i class="fas fa-hospital-user"></i>
+            </div>
+            <h3 class="service-title">General Surgery</h3>
+            <p>Advanced surgical procedures performed by highly trained surgeons using minimally invasive techniques.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-4">
+            <div class="service-icon float">
+                <i class="fas fa-allergies"></i>
+            </div>
+            <h3 class="service-title">Dermatology</h3>
+            <p>Comprehensive skin care services for all ages, treating both medical and cosmetic dermatological concerns.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Doctors Preview -->
+    <!-- Doctors Section -->
+<section class="doctors-preview" id="doctors">
+    <h2 class="section-title fade-in">Meet Our Doctors</h2>
+    <p class="section-subtitle fade-in">Experienced, compassionate, and dedicated to your care.</p>
+
+    <div class="doctors-container">
+        <div class="doctor-card fade-in delay-1">
+            <div class="doctor-img">
+                <img src="images/sara.jpg" alt="Dr. Sarah Johnson">
+
+            </div>
+            <div class="doctor-info">
+                <h3 class="doctor-name">Dr. Sarah Johnson</h3>
+                <p class="doctor-specialty">Cardiology</p>
+                <p>Expert in diagnosing and treating heart conditions with over 15 years of experience.</p>
+            </div>
+        </div>
+
+        <div class="doctor-card fade-in delay-2">
+            <div class="doctor-img">
+                <img src="images/michel.jpg" alt="Doctor 2">
+            </div>
+            <div class="doctor-info">
+                <h3 class="doctor-name">Dr. Michael Chen</h3>
+                <p class="doctor-specialty">Orthopedics</p>
+                <p>Specializes in joint replacement and sports injuries, helping patients regain mobility.</p>
+            </div>
+        </div>
+
+        <div class="doctor-card fade-in delay-3">
+            <div class="doctor-img">
+                <img src="images/emily.jpg" alt="Doctor 3">
+            </div>
+            <div class="doctor-info">
+                <h3 class="doctor-name">Dr. Emily Wilson</h3>
+                <p class="doctor-specialty">Pediatrics</p>
+                <p>Dedicated to providing exceptional care to children of all ages in a friendly environment.</p>
+            </div>
+        </div>
+
+        <div class="doctor-card fade-in delay-1">
+            <div class="doctor-img">
+                <img src="images/rajivi.jpg" alt="Doctor 4">
+            </div>
+            <div class="doctor-info">
+                <h3 class="doctor-name">Dr. Rajiv Patel</h3>
+                <p class="doctor-specialty">General Surgery</p>
+                <p>Highly skilled surgeon with expertise in minimally invasive procedures and patient care.</p>
+            </div>
+        </div>
+
+        <div class="doctor-card fade-in delay-2">
+            <div class="doctor-img">
+                <img src="images/aisha.jpg" alt="Doctor 5">
+            </div>
+            <div class="doctor-info">
+                <h3 class="doctor-name">Dr. Aisha Khan</h3>
+                <p class="doctor-specialty">Dermatology</p>
+                <p>Offers both medical and cosmetic skin care with a patient-centered approach.</p>
+            </div>
+        </div>
+
+        <div class="doctor-card fade-in delay-3">
+            <div class="doctor-img">
+                <img src="images/thomas.jpg" alt="Doctor 6">
+            </div>
+            <div class="doctor-info">
+                <h3 class="doctor-name">Dr. Thomas Reed</h3>
+                <p class="doctor-specialty">Neurology</p>
+                <p>Focuses on treating neurological disorders with advanced techniques and care.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Call to Action -->
+       <!-- Call to Action -->
+<section class="cta" id="appointments">
+    <h2 class="animate__animated animate__fadeIn">Ready to Schedule Your Visit?</h2>
+    <p class="animate__animated animate__fadeIn animate__delay-1s">Book an appointment with our specialists and take the first step towards better health.</p>
+    
+    <!-- Book Button -->
+    <a href="#appointments-form" class="btn btn-secondary animate__animated animate__fadeIn animate__delay-2s pulse">Book an Appointment</a>
+
+    <!-- Appointment Form -->
+    <form id="appointments-form" action="submit_appointment.php" method="post" style="margin-top: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:10px;margin-bottom:1rem;">
+        
+        <input type="tel" name="contact" placeholder="Your Contact Number" required style="width:100%;padding:10px;margin-bottom:1rem;">
+    
+        <select name="department" required style="width:100%;padding:10px;margin-bottom:1rem;">
+            <option value="">Select Department</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="General Surgery">General Surgery</option>
+            <option value="Dermatology">Dermatology</option>
+        </select>
+    
+        <input type="datetime-local" name="appointment_datetime" required style="width:100%;padding:10px;margin-bottom:1rem;">
+    
+        <button type="submit" class="btn btn-outline">Submit</button>
+    </form>
+    
+</section>
+
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title fade-in">What Our Patients Say</h2>
+        <p class="section-subtitle fade-in">Discover why our patients trust us with their health and wellbeing.</p>
+        
+        <div class="testimonial-container fade-in delay-2">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    The care I received at Harmony Care Hospital was exceptional. The doctors were knowledgeable and attentive, and the nursing staff was incredibly supportive throughout my recovery.
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-img">
+                        <img src="images/patients.jpg" alt="Patient">
+                    </div>
+                    <div class="author-info">
+                        <h4>John Doe</h4>
+                        <p>Cardiac Patient</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Harmony Care Hospital</h3>
+                <p>Providing exceptional healthcare services with compassion and expertise since 1995.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="hospital.html" class="active">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#appointments">Appointments</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="services.html">Cardiology</a></li>
+                    <li><a href="services.html">Orthopedics</a></li>
+                    <li><a href="services.html">Pediatrics</a></li>
+                    <li><a href="services.html">General Surgery</a></li>
+                    <li><a href="services.html">Dermatology</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Ganapathy ,Lenin Nagar, Coimbatore</p>
+                <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@harmonycare.com</p>
+                <p><i class="fas fa-clock"></i> 24/7 Emergency Services</p>
+            </div>
+            <div style="margin-top: 2rem;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31328.787972679216!2d76.94697263476561!3d11.031236500000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8586c00000039%3A0x1ab03c2cb32ea857!2sNvron%20Life%20Science%20Ltd!5e0!3m2!1sen!2sin!4v1746021226857!5m2!1sen!2sin"
+                  height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    
+                </iframe>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Harmony Care Hospital. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('#navbar');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a menu item
+        document.querySelectorAll('#navbar a').forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll Animation
+        const fadeElems = document.querySelectorAll('.fade-in');
+        
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+        
+        fadeElems.forEach(elem => {
+            scrollObserver.observe(elem);
+        });
+    </script>
+</body>
+</html>
